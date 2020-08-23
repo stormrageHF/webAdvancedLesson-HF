@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  console.log('start');
+
+  setTimeout(() => {
+    console.log('time1 invoked');
+  }, 1800);
+
+  setTimeout(() => {
+    console.log('time2 invoked');
+    setTimeout(() => {
+      console.log('inner invoked');
+    }, 1000);
+  }, 1000);
+
+  console.log('end');
+
+  /*
+  js 本身是单线程执行得（同步）
+
+  但是浏览器里得api有可能是异步执行，也就是说会自动创建一个自己得线程，比如 settimeout
+
+
+  总结：这里文字总结，还是视频课程里得更好一点，动态效果
+ 
+  首先，正常执行上面这段代码得时候，调用栈里都过了一遍；
+
+  遇到 settimeout 得时候就要启分线程执行（异步），启动一个定时器，到点后，回调函数会作为一个事件进入消息队列；所以谁先到点谁先进；
+
+  此时，event loop(事件循环) 正在监听消息队列；一旦发现消息队列有事件进来了，就会调用这个事件得函数，也就是入栈（进入 call stack），这个是要排队得，上一个不出栈，下一个不能入栈；
+
+
+
+  所以，异步后的回调函数会执行，完全靠 事件循环 和 消息队列
+
+  注意点： event loop 监听调用栈和消息队列
+
+  call stack 是一个正在执行事件得工作表 ； 消息队列是一个待办事件得工作表
+
+  主线程完成后，会依次执行消息队列里得任务
+
+  */
+</script>
+
+</html>

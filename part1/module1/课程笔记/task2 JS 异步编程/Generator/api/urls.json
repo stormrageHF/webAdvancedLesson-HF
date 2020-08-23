@@ -1,0 +1,4 @@
+{
+  "posts": "api/posts.json",
+  "users": "api/users.json"
+}

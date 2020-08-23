@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 这里可以看一下 同步模式执行 js 语言得时候， call stack 里得执行情况
+
+  console.log('start');
+
+  function bar() {
+    console.log('bar');
+  }
+
+  function foo() {
+    console.log('foo');
+    bar()
+  }
+
+  foo()
+
+  console.log('end');
+
+  /*
+  始终有一个匿名得全局调用在栈底
+  第一步 执行log start ，结束
+  函数声明不入栈
+  第二步 foo 入栈，log foo，
+  第三步 bar 继续入栈， log bar
+  结束 bar 出栈
+  结束 foo 出栈
+  最后 log end
+  */
+</script>
+
+</html>
