@@ -1,3 +1,5 @@
+// node 异步
+
 console.log('start')
 setTimeout(() => {
   console.log('timer1 start')
