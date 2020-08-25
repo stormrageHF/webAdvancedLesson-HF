@@ -62,8 +62,8 @@ const cars = [
 
 {
   // 练习4
-  // space 替换 _
-  let _underscore = fp.replace(/\s+/g, '_')
+  // space 替换 _ , \W(大写)用来匹配非单词字符，它等价于"[^a-zA-Z0-9_]"
+  let _underscore = fp.replace(/\W+/g, '_')
 
   // 获取name数组
   let getNames = function (cars) {
