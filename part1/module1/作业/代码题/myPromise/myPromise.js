@@ -1,5 +1,3 @@
-const myPromise = require("../../../课程笔记/task3 手写Promise 源码/myPromise")
-
 /*
 1. promise 是一个类，有一个执行器并且立即执行;
 2. 有三种状态pending，fulfilled，rejected
