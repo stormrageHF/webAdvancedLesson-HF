@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./functor.js"></script>
+  <script>
+    // 把美元转换成人民币
+    // $299.9
+    // ¥。。。。
+    const toRMB = s => Functor.of(s)
+      .map(v => v.replace('$', ''))
+      .map(parseFloat)
+      .map(v => v * 7)
+      .map(v => v.toFixed(2))
+      .value(v => '¥' + v)
+
+    console.log(toRMB('$299.9'))
+  </script>
+</body>
+</html>

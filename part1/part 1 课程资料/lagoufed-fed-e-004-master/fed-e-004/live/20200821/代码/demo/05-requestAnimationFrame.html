@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>test</div>
+  <script>
+    // queueMicrotask 微任务最先执行
+    // 界面上有元素的话
+    //   requestAnimationFrame 比 setTimeout 先执行
+    // 界面上没有元素的话，requestAnimationFrame 和 setTimeout 执行时机不确定
+    // requestAnimationFrame 下一次重绘之前执行回调函数
+    
+    // queueMicrotask >  requestAnimationFrame > setTimeout
+
+    requestAnimationFrame(_ => {
+      console.log('requestAnimationFrame')
+    })
+
+    setTimeout(_ => {
+      console.log('setTimeout')
+    }, 0)
+
+    queueMicrotask(_ => {
+      console.log('queueMicrotask')
+      
+    })
+  </script>
+</body>
+</html>

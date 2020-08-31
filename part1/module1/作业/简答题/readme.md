@@ -12,7 +12,7 @@ EventLoop 是一种程序结构，用来等待和发送消息事件。是用来�
 setTimeout setInterval  setImmediate(node)  requestAnimationFrame(浏览器)  I/O操作  UI rendering(浏览器)
 
 微任务 microtask 队列：会有一些其他异步任务的回调依次进入队列等待后序调用，包括：
-process.nextTick(node) Promise MutationObserver Object.Observe(废弃)
+process.nextTick(node) Promise MutationObserver Object.Observe(废弃) queueMicrotask
 
 实现过程：
 js 的单线程任务分为同步任务和异步任务，同步任务会在调用栈（call stack）中按照顺序等待主线程依次执行，

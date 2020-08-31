@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>heap</title>
+</head>
+<body>
+  <button id="btn">add</button>
+  <script>
+    let element = null
+    function fn(){
+      const ul = document.createElement('ul')
+      for(let i=0;i<10;i++){
+        const li = document.createElement('li')
+        ul.appendChild(li)
+      }
+      element = ul
+
+      element = null //  没用就清了
+    }
+    document.getElementById('btn').addEventListener('click',fn)
+  </script>
+</body>
+</html>
