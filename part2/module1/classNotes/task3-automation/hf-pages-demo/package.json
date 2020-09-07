@@ -1,0 +1,16 @@
+{
+  "name": "hf-pages-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "hf-pages clean",
+    "build": "hf-pages build",
+    "develop": "hf-pages develop"
+  },
+  "devDependencies": {
+    "hf-pages": "^0.2.0"
+  }
+}
+
+
