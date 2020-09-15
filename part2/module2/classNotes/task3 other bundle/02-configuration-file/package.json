@@ -1,0 +1,9 @@
+{
+  "name": "02-configuration-file",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^2.26.11"
+  }
+}

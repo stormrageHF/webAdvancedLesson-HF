@@ -1,0 +1,11 @@
+{
+  "name": "05-commonjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^2.26.11",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0"
+  }
+}
