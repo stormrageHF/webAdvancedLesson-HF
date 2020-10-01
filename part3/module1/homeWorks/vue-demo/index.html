@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>差值表达式</h1>
+    <h3>en ~ {{ msg }}</h3>
+    <h3>{{ count }}</h3>
+    <h1>v-text</h1>
+    <div v-text="msg"></div>
+    <h1>v-model</h1>
+    <input type="text" v-model="msg">
+    <input type="text" v-model="count">
+    <h1>v-html</h1>
+    <div v-html="node"></div>
+    <h1>v-on</h1>
+    <div>
+      <button v-on="{mouseenter:onEnter,mouseout:onOut}" v-on:click="onClick">点击</button>
+     
+      <form v-on:keyup="onKeyup" v-on:submit.prevent="onSubmit2" >
+          <input type="text">
+          <button type="submit">提交</button>
+      </form>
+     
+  </div>
+  </div>
+  <script src="./src/js/dep.js"></script>
+  <script src="./src/js/watcher.js"></script>
+  <script src="./src/js/compiler.js"></script>
+  <script src="./src/js/observer.js"></script>
+  <script src="./src/js/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello Vue',
+        count: 20,
+        items: ['a', 'b', 'c'],
+        person: {
+          name: "hanfei",
+          china: {
+            age: 17
+          }
+        },
+        node: "<h1>这是一个h1元素内容</h1>"
+      },
+      methods:{
+        onClick:function(){
+            console.log('onClick')
+        },
+        onEnter:function(){
+            console.log("onEnter")
+        },
+        onOut:function(){
+            console.log("onOut")
+        },
+        onSubmit:function(e){
+            e.preventDefault();
+            console.log("onSubmit")
+        },
+        onSubmit2:function(){
+            console.log("onSubmit2")
+        },
+        onKeyup:function(){
+            console.log("onKeyup")
+        }
+      }
+    })
+   
+  </script>
+</body>
+
+</html>
