@@ -558,5 +558,28 @@ query ($id: ID){
 2. config下 database.js 文件配置更换为 mysql 的配置信息，账号密码都配置好
 3. 代码上传到gitee
 4. 远程服务器下载代码到本地，启动项目安装依赖
+5. 打包启动项目，用pm2实现后台进程管理
+6. 公网访问地址 http://8.131.251.24:1337/admin 能正常访问
+7. 如果内网可以访问公网ip无法访问，原因：防火墙和安全组
+8. 用公网地址创建文章内容，准备数据
+
+# Gridsome案例-把本地服务联通远程Strapi
+1. 将api地址配置环境变量 https://gridsome.org/docs/environment-variables/
+2. gridsome.config.js 修改配置 apiURL: process.env.GRIDSOME_API_URL
+3. 启动gridsome,查看数据是否显示正常，注意api名称可能会变
+
+# Gridsome案例-部署Gridsome应用
+1. 可以使用vercel实现自动部署，监听变化自动部署
+2. 官方网站 https://vercel.com/login 用github账号登录
+3. 在github上为gridsome新建一个仓库，push代码并获取仓库连接
+4. Import Git Repository 选择github账号下的一个库 blog-frontend,开始部署
+5. 访问地址 https://blog-frontend.stormragehf.vercel.app/
+6. 检测变化自动部署更新，进入vercel 当前项目的 setting，找到git相关的 Deploy Hooks，创建hooks连接，复制这个url
+7. 进入 strapi 找到，设置立的webhooks添加进去，权限都勾选，
+8. 数据变化，媒体变化，都会在vercel 的 https://vercel.com/stormragehf/blog-frontend/deployments 查看部署变化
+
+
+
+
 
 

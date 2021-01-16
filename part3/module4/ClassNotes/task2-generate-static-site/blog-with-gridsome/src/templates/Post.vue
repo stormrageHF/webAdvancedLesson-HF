@@ -3,7 +3,7 @@
     <!-- Page Header -->
     <header class="masthead" 
     :style="{
-      backgroundImage: `url(http://localhost:1337${$page.post.cover.url})`  
+      backgroundImage: `url(${GRIDSOME_API_URL + $page.post.cover.url})`  
     }"
     >
       <div class="overlay"></div>
@@ -40,7 +40,7 @@
 </template>
 <page-query>
 query ($id: ID){
- post: strapiPosts(id: $id) {
+post: strapiPosts(id: $id) {
   id
   title
   content
