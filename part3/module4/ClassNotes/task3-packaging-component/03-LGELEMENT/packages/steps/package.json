@@ -1,5 +1,5 @@
 {
-  "name": "lg-form",
+  "name": "lg-steps",
   "version": "0.0.1",
   "description": "",
   "main": "dist/cjs/index.js",
@@ -12,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "lodash": "4"
+    "lodash": "3"
   },
   "gitHead": "a5da7dfdb7f1d316f2ddf354e167dfe412d05d7a"
 }

@@ -58,6 +58,9 @@ npm install sharp 这个不执行，等gridsome安装的时候自动安装了，
 - 打开文件 C:\Windows\System32\drivers\etc\hosts ,添加 151.101.196.133   raw.githubusercontent.com 配置
 - 重新安装即可 npm i
 
+## 如果npm安装总是报错？
+- 请使用cnpm安装试试
+
 # Gridsome基础-预渲染
 npm run build 生成dist 目录中的静态网站
 本地测试，可以安装serve npm i -g serve，安装后，启动 serve dist
@@ -415,7 +418,7 @@ api 的调用方法在官网 https://strapi.io/documentation/developer-docs/late
 4. 打开 http://localhost:8080/___explore 查看strapi 数据，例如
 ```
 query {
-  allStrapiPosts {
+  allStrapiPost {
     edges {
       node {
         id
@@ -462,7 +465,7 @@ query {
 ...
 <page-query>
 query {
- posts: allStrapiPosts {
+ posts: allStrapiPost {
   edges {
     node {
       id
@@ -489,7 +492,7 @@ query {
 1. config 文件中配置 templates
 ```
  templates: {
-    StrapiPosts: [
+    StrapiPost: [
       {
         path: '/post/:id',
         component: './src/templates/Post.vue'
@@ -509,7 +512,7 @@ query {
 ```
 <page-query>
 query ($id: ID){
- strapiPosts(id: $id) {
+ strapiPost(id: $id) {
   id
   title
   content
