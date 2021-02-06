@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let target = {
+      name: 'tom'
+    }
+    const proxy = new Proxy(target, {
+      defineProperty(target,key, desc){
+        console.log(key, desc);
+        target[key] = desc.value
+      }
+    })
+
+    proxy.age = 100
+  
+    console.log(target);
+  </script>
+</body>
+</html>
