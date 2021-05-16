@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="increment">+1</button>
+  <span id="box">0</span>
+  <button id="decrement">-1</button>
+
+  <script src="./myRedux.js"></script>
+  <script src="./middlewares/logger.js"></script>
+  <script src="./middlewares/thunk.js"></script>
+  <script>
+    function enhancer(createStore) {
+      return function (recuder, preloadedState) {
+
+        const store = createStore(reducer, preloadedState)
+        const dispatch = store.dispatch
+
+        function _dispatch(action) {
+          if (typeof action === 'function') {
+            return action(dispatch)
+          }
+          dispatch(action)
+        }
+        return {
+          ...store,
+          dispatch: _dispatch
+        }
+      }
+    }
+
+    function reducer(state, action) {
+      switch (action.type) {
+        case 'increment':
+          return state + 1
+        case 'decrement':
+          return state - 1
+        default:
+          return state
+      }
+    }
+
+    const rootReducer = combineReducers({
+      counter: reducer
+    })
+
+    const store = createStore(rootReducer, {
+      counter: 100
+    }, applyMiddleware(logger, thunk))
+
+    store.subscribe(() => {
+      document.getElementById('box').innerHTML = store.getState().counter
+    })
+
+    function increment() {
+      return {
+        type: 'increment'
+      }
+    }
+
+    function decrement() {
+      return {
+        type: 'decrement'
+      }
+    }
+
+    const actions = bindActionCreators({
+      increment,
+      decrement
+    }, store.dispatch)
+
+
+
+    document.getElementById('increment').onclick = () => {
+      actions.increment()
+
+      // store.dispatch({
+      //   type: 'increment'
+      // })
+
+      // store.dispatch((dispatch) => {
+      //   setTimeout(() => {
+      //     dispatch({
+      //       type: 'increment'
+      //     })
+      //   }, 1000);
+      // })
+    }
+
+    document.getElementById('decrement').onclick = () => {
+      // store.dispatch({
+      //   type: 'decrement'
+      // })
+      actions.decrement()
+    }
+  </script>
+</body>
+
+</html>
